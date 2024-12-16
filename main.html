@@ -1,0 +1,32 @@
+<script>
+  // Function to sort packages based on their volume, dimensions, and mass
+  function sort(width, height, length, mass) {
+    // Calculate the volume of the package
+    const volume = width * height * length;
+
+    // Determine if the package is bulky
+    const isBulky = volume >= 1000000 || width >= 150 || height >= 150 || length >= 150;
+
+    // Determine if the package is heavy
+    const isHeavy = mass >= 20;
+
+    // Check conditions for rejected packages
+    if (isBulky && isHeavy) {
+        return "REJECTED";
+    }
+
+    // Check conditions for special packages
+    if (isBulky || isHeavy) {
+        return "SPECIAL";
+    }
+
+    // Default to standard packages
+    return "STANDARD";
+  }
+
+  // Example usage:
+  console.log(sort(200, 100, 50, 25)); 
+  console.log(sort(100, 100, 100, 5)); 
+  console.log(sort(160, 200, 150, 30)); 
+  console.log(sort(150, 50, 50, 10)); 
+</script>
